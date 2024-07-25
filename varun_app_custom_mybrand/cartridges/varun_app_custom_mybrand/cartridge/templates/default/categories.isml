@@ -1,0 +1,24 @@
+<iscomment> <isdecorate template="common/layout/page"> </iscomment>
+<h1> Categories (Assignment)  </h1>
+      <div class="menu-group" role="navigation">
+        <ul class="nav navbar-nav" role="menu">
+            <isif condition="${pdict.categories}">
+                <isloop items="${pdict.categories}" var="category">
+                    <isif condition="${category.subCategories}">
+                        <li class="nav-item dropdown" role="presentation">
+                            <a href="<isprint value="${category.url}" encoding="htmldoublequote"/>" id="${category.id}" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">${category.displayName}</a>
+                            <isset name="menuItem" value="${category}" scope="page" />
+                            <isinclude template="/menuItem" />
+                        </li>
+                    <iselse/>
+                        <li class="nav-item" role="presentation">
+                            <a href="<isprint value="${category.url}" encoding="htmldoublequote"/>" id="${category.id}" class="nav-link" role="link" tabindex="0">${category.displayName}</a>
+                        </li>
+                    </isif>
+                </isloop>
+            </isif>
+            <isinclude url="${URLUtils.url('Account-Header', 'mobile', true)}" />
+            <isinclude url="${URLUtils.url('Page-Locale', 'mobile', true)}" />
+        </ul>
+    </div>
+  <iscomment> </isdecorate> </iscomment>

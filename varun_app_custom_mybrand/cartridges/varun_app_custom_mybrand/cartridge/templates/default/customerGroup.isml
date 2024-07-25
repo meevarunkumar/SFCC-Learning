@@ -1,0 +1,12 @@
+<isdecorate template="common/layout/page">
+
+  <h1>List of customer groups </h1>
+  <isloop items="${pdict.customerGroup}" var="customerGroup">
+  <h3> ID: ${customerGroup.ID}</h3>
+  <h5> Description : ${customerGroup.description}</h5>
+  
+  <isprint value="${customerGroup.description}">  </isprint>
+  
+  </isloop>
+      <isinclude url="${URLUtils.url('ProductController-ShowCategories')}"></isinclude>
+  </isdecorate>

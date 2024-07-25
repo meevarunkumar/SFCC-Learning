@@ -1,0 +1,20 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/contact.js');
+        assets.addCss('/css/contactUs.css');
+    </isscript>
+ 
+ <div class="hero slant-down contact-us-banner">
+        <h1 class="page-title">${Resource.msg('title.contact.us.page', 'contactUs', null)}</h1>
+    </div>
+ 
+<h1>AJAX Form Submission Example</h1>          
+    <form action="${pdict.actionUrl}" class="contact-us" method="POST" >
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <button class="submit" type="submit">Submit</button>
+    </form>
+</isdecorate>

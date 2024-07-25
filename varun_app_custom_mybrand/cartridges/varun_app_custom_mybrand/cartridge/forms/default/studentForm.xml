@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
+ 
+<group formid='student'>
+ 
+    <field
+        formid="id"
+        label="label.input.id.profile"
+        max-length="50"
+        missing-error="error.message.required"
+        mandatory="true"
+        range-error="error.message.50orless"
+        type="string" />
+ 
+    <field
+        formid="name"
+        label="label.input.name.profile"
+        max-length="50"
+        missing-error="error.message.required"
+        mandatory="true"
+        range-error="error.message.50orless"
+        type="string" />
+ 
+    <field
+        formid="email"
+        label="label.input.email.profile"
+        max-length="50"
+        missing-error="error.message.required"
+        mandatory="true"
+        range-error="error.message.50orless"
+        type="string" />
+ 
+    <field
+        formid="dob"
+        label="label.input.dob.profile"
+        max-length="50"
+        missing-error="error.message.required"
+        mandatory="true"
+        range-error="error.message.50orless"
+        type="string" />
+ 
+    <field
+        formid="phone"
+        label="label.input.phone.profile"
+        max-length="50"
+        missing-error="error.message.required"
+        mandatory="true"
+        range-error="error.message.50orless"
+        type="string" />  
+ 
+</group>
+ 
+</form>

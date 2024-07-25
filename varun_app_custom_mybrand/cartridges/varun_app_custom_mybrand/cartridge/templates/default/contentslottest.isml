@@ -1,0 +1,18 @@
+<isdecorate template="common/layout/page">
+
+
+
+
+    <div class="homepage shop-the-style">
+        <isslot id="newArrival" description="Link to new Arrivals." context="global" />
+    </div>
+
+    <div class="homepage shop-the-style">
+        <isslot id="image-gallery" description="Image Gallery" context="global" />
+    </div>
+     
+    <div class="homepage shop-the-style">
+        <isslot id="product-carousel" description="Image Gallery" context="global" />
+    </div>
+     
+</isdecorate>

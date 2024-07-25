@@ -1,0 +1,93 @@
+<isdecorate template="common/layout/page">
+ 
+<form action="${URLUtils.url('Student-updateStudent')}">
+ 
+<h1>Fill the Student Form</h1>
+ <iscomment> ID :<input type="text" name="${pdict.registrationForm.student.id.attributes}"><br>
+ 
+Name :<input type="text" name="${pdict.registrationForm.student.name.attributes}"><br>
+ 
+Email :<input type="text" name="${pdict.registrationForm.student.email.attributes}"><br>
+ 
+Dob :<input type="text" name="${pdict.registrationForm.student.dob.attributes}"><br>
+ 
+Phone Number :<input type="text" name="${pdict.registrationForm.student.phone.attributes}"><br>
+ 
+<input type="submit" name="SUBMIT" > </iscomment>
+ 
+   
+    <div class="form-group
+        <isif condition="${!!pdict.registrationForm.student.name.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="registration-form-fname">
+            <isprint value="${pdict.registrationForm.student.name.label}" encoding="htmlcontent" />
+        </label>
+        <input
+            type="text"
+            value="${pdict.studentData.custom.name}"
+            class="form-control"
+            id="registration-form-fname"
+            data-missing-error="${Resource.msg('error.message.required','forms',null)}"
+            data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
+            aria-describedby="form-fname-error"
+            <isprint value=${pdict.registrationForm.student.name.attributes} encoding="off" />>
+        <div class="invalid-feedback" id="form-fname-error"></div>
+    </div>
+ 
+    <div class="form-group
+        <isif condition="${!!pdict.registrationForm.student.email.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="registration-form-fname">
+            <isprint value="${pdict.registrationForm.student.email.label}" encoding="htmlcontent" />
+        </label>
+        <input
+            type="text"
+            readonly
+            value="${pdict.studentData.custom.email}"
+            class="form-control"
+            id="registration-form-fname"
+            data-missing-error="${Resource.msg('error.message.required','forms',null)}"
+            data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
+            aria-describedby="form-fname-error"
+            <isprint value=${pdict.registrationForm.student.email.attributes} encoding="off" />>
+        <div class="invalid-feedback" id="form-fname-error"></div>
+    </div>
+ 
+    <div class="form-group
+        <isif condition="${!!pdict.registrationForm.student.dob.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="registration-form-fname">
+            <isprint value="${pdict.registrationForm.student.dob.label}" encoding="htmlcontent" />
+        </label>
+        <input
+            type="text"
+            value="${pdict.studentData.custom.dob}"
+            class="form-control"
+            id="registration-form-fname"
+            data-missing-error="${Resource.msg('error.message.required','forms',null)}"
+            data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
+            aria-describedby="form-fname-error"
+            <isprint value=${pdict.registrationForm.student.dob.attributes} encoding="off" />>
+        <div class="invalid-feedback" id="form-fname-error"></div>
+    </div>
+ 
+    <div class="form-group
+        <isif condition="${!!pdict.registrationForm.student.phone.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="registration-form-fname">
+            <isprint value="${pdict.registrationForm.student.phone.label}" encoding="htmlcontent" />
+        </label>
+        <input
+            type="text"
+            value="${pdict.studentData.custom.phone}"
+            class="form-control"
+            id="registration-form-fname"
+            data-missing-error="${Resource.msg('error.message.required','forms',null)}"
+            data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
+            aria-describedby="form-fname-error"
+            <isprint value=${pdict.registrationForm.student.phone.attributes} encoding="off" />>
+        <div class="invalid-feedback" id="form-fname-error"></div>
+    </div>
+ 
+ 
+    <input type="submit" name="SUBMIT" >
+</form>
+ 
+   
+</isdecorate>

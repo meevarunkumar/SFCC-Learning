@@ -1,0 +1,9 @@
+ 
+<isdecorate template="common/layout/page">
+    <h1>Student Registered Successfully</h1>
+ 
+   
+   <button> <a href="${URLUtils.url('Student-getAllStudents')}"> View Student List </a> </button>
+ 
+ 
+</isdecorate>

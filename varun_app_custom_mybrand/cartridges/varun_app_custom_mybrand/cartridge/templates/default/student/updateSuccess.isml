@@ -1,0 +1,28 @@
+<isdecorate template="common/layout/page">
+   
+    <h1>Student Updated Successfully</h1>
+ 
+ 
+ <table border="2px solid">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Dob</th>
+   <tr>
+   
+   
+   <td>${pdict.student.custom.id}</td>
+   <td>${pdict.student.custom.name}</td>
+   <td>${pdict.student.custom.email}</td>
+   <td>${pdict.student.custom.phone}</td>
+   <td>${pdict.student.custom.dob}</td>
+   
+    <td><a href="${URLUtils.url('Student-edit','email', student.custom.email )}">Edit Profile</a></td>
+   </tr>
+ 
+    </table>
+ 
+ 
+ 
+</isdecorate>

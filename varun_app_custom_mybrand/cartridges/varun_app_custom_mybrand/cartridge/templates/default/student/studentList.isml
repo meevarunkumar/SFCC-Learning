@@ -1,0 +1,41 @@
+<isdecorate template="common/layout/page">
+ <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/test.css');
+        assets.addJs('/js/test.js');
+    </isscript>
+
+    <p> Click on  me to  hide </p>
+ <table class="styled-table">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Dob</th>
+        <th colspan="2">Edit/Delete</th>
+ 
+<isloop items="${pdict.studentList}" var="student">
+   <tr>
+   <td>${student.custom.id}</td>
+   <td>${student.custom.name}</td>
+   <td>${student.custom.email}</td>
+   <td>${student.custom.phone}</td>
+   <td>${student.custom.dob}</td>
+   
+    <td><a href="${URLUtils.url('Student-edit','email', student.custom.email )}">Edit Profile</a></td>
+    <td><a href="${URLUtils.url('Student-delete','email', student.custom.email )}">Delete Profile</a></td>
+   </tr>
+    </isloop>    
+    </table> <br>
+ 
+<button><a href="${URLUtils.url('Student-registerForm')}">Create New Student</a></button>
+<button class="hide"> HIDE </button>
+<button class="show"> SHOW </button>
+
+
+<input type="text" name="text" value="">
+
+
+ 
+ 
+</isdecorate>

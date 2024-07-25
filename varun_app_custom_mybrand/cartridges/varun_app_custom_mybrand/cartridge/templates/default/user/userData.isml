@@ -1,0 +1,4 @@
+${pdict.result.id}
+${pdict.result.name}
+${pdict.result.job}
+${pdict.result.createdAt}

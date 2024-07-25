@@ -1,0 +1,182 @@
+
+
+var File = require('dw/io/File');
+
+var FileReader = require('dw/io/FileReader');
+
+var CSVStreamReader = require('dw/io/CSVStreamReader');
+
+var fileType = '.csv';
+
+var Site = require('dw/system/Site');
+
+var CatalogMgr = require('dw/catalog/CatalogMgr');
+
+var Site = require('dw/system/Site');
+
+var xmlhelper = require('~/cartridge/scripts/steps/productCreationHelper.js');
+
+function readCSVFile(args) {
+
+  try {
+
+        var fileName = args.Filename;
+
+        var xmlFilePath = args.xmlFile;
+
+        // Get the path to the CSV file
+
+        var filePath = fileName + fileType;
+
+        // Create a File object for the CSV file
+
+        var csvFile = new File(filePath);
+
+        // Create a FileReader for the CSV file
+
+        var fileReader = new FileReader(csvFile, 'UTF-8');
+
+        // Create a CSVStreamReader to read CSV data
+
+        var csvReader = new CSVStreamReader(fileReader);
+
+        // Read the CSV header
+
+        var headers = csvReader.readNext();
+
+        var fileContent = [];
+
+        if (headers) {
+
+            // Loop through the CSV rows
+
+            var row;
+
+            // eslint-disable-next-line no-cond-assign
+
+            while ((row = csvReader.readNext()) !== null) {
+ 
+                fileContent.push(row);
+
+                // Process each row as needed
+
+                // pushes the all the rows in empty array
+
+            }
+
+            dw.system.Logger.info('CSV Row: ' + JSON.stringify(fileContent, null, 2));
+
+            // eslint-disable-next-line no-undef
+
+            xmlhelper.generateProductXML(xmlFilePath,fileContent);
+
+        }
+
+    } catch (e) {
+
+        // Handle any exceptions that may occur during file reading or CSV parsing and generating the xml file.
+
+        // eslint-disable-next-line no-undef
+
+        dw.system.Logger.error('Error reading CSV file: ' + e.message);
+
+    }
+
+}
+
+module.exports = {
+
+  readCSVFile: readCSVFile
+
+};
+ 
+var XMLStreamWriter = require('dw/io/XMLStreamWriter');
+
+var FileWriter = require('dw/io/FileWriter');
+
+var File = require('dw/io/File');
+ 
+ 
+function generateProductXML(xmlFilePath,fileContent) {
+
+    var xmlFullPath = xmlFilePath + '/' + 'productCatalog.xml';
+
+    // xmlFullPath is the path of the file where the xml file is generated.
+
+    var file = new File(xmlFullPath);
+
+    var fileWriter = new FileWriter(file, 'UTF-8');
+
+    var xsw = new XMLStreamWriter(fileWriter);
+ 
+ 
+    xsw.writeStartDocument('UTF-8', '1.0');
+
+    xsw.writeStartElement('catalog');
+
+    xsw.writeAttribute('xmlns', 'http://www.demandware.com/xml/impex/catalog/2006-10-31');
+
+    xsw.writeAttribute('catalog-id', 'apparel-m-catalog');
+ 
+    fileContent.forEach(function (productData) {
+ 
+        xsw.writeStartElement('product');
+
+        xsw.writeAttribute('product-id', productData[0]);
+ 
+        writeElement(xsw, 'display-name', { 'xml:lang': 'x-default' }, productData[1]);
+
+        writeElement(xsw, 'display-name', { 'xml:lang': 'el-GR' }, productData[2]);
+ 
+        xsw.writeEndElement(); // Closing 'product'
+ 
+    });
+ 
+   
+ 
+ 
+       xsw.writeEndElement(); // Closing 'catalog'
+
+       xsw.writeEndDocument();
+ 
+       closeWriter(xsw);
+
+       closeWriter(fileWriter);
+
+}
+ 
+function writeElement(xsw, elementName, attributes, textContent) {
+
+    xsw.writeStartElement(elementName);
+ 
+    if (attributes) {
+
+        for (var attributeName in attributes) {
+
+            xsw.writeAttribute(attributeName, attributes[attributeName]);
+
+        }
+
+    }
+ 
+    xsw.writeCharacters(textContent);
+
+    xsw.writeEndElement();
+
+}
+ 
+function closeWriter(writer) {
+
+    writer.flush();       // flush ensures that any remaining data in the buffer is written out.
+
+    writer.close();
+
+}
+ 
+module.exports = {
+
+    generateProductXML: generateProductXML
+
+};
+
+ 

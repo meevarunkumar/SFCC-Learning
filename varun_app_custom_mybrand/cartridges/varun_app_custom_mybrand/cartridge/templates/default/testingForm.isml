@@ -1,0 +1,15 @@
+<div class="form-group
+        <isif condition="${!!pdict.testingForm.testingform.firstname.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="registration-form-fname">
+            <isprint value="${pdict.testingForm.testingform.firstname.label}" encoding="htmlcontent" />
+        </label>
+        <input
+            type="text"
+            class="form-control"
+            id="registration-form-fname"
+            data-missing-error="${Resource.msg('error.message.required','forms',null)}"
+            data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
+            aria-describedby="form-fname-error"
+            <isprint value=${pdict.testingform.testingform.firstname.attributes} encoding="off" />>
+        <div class="invalid-feedback" id="form-fname-error"></div>
+    </div>

@@ -1,0 +1,10 @@
+
+<isinclude template="/components/modules"  />
+
+<isdecorate template="common/layout/page">
+
+<iscontentasset aid="${pdict.contentAsset.ID}" />
+<isprint value="${pdict.contentAsset.ID}" encoding="off" />
+
+    
+</isdecorate>
